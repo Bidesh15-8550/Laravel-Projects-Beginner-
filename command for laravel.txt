@@ -1,0 +1,21 @@
+**composer create-project laravel/laravel example-app (creating laravel project)
+
+**php artisan serve (to run server)
+
+**http folder(inside app folder) will be used more.
+
+**cache, mail,session (inside config folder) will be used more.
+
+**migration folder(inside database folder) will be used more. (for creating table, colomn, update,delete in database).
+
+**robots.txt file(inside public folder) will be used for scraping or if the website will be find in search engine or not.(USER-AGENT will be allowed)
+
+**resources will be used for css,js, language and views purpose.
+
+** .env file(environment variable) will be used 
+** composer.json will be used 
+** package.json
+
+MVC system(software development process) (Model View Controller)
+
+
