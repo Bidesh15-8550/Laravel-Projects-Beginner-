@@ -3,9 +3,9 @@
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', 'SiteController@Home');
+Route::get('/', 'App\Http\Controllers\SiteController@Home');
 
-Route::get('/about', 'SiteController@About');
+Route::get('/about', 'App\Http\Controllers\SiteController@About');
 
-Route::get('/contact', 'SiteController@Contact');
+Route::get('/contact', 'App\Http\Controllers\SiteController@Contact');
 
