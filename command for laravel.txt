@@ -18,4 +18,6 @@
 
 MVC system(software development process) (Model View Controller)
 
+web.php App\Http\Controllers\DemoController@MyName
+
 
