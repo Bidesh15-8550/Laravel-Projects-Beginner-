@@ -8,6 +8,6 @@ class DemoController extends Controller
 {
     function MyName($firstName, $MiddleName, $lastName){
 
-       return view('DemoView');
+       return view('DemoView',['firstkey'=>$firstName]); //associative array
     }
 }
