@@ -9,7 +9,6 @@ class Users extends Controller
     //
     public function index($user)
     {
-        echo $user;
-        echo "hello from controller";
+        return ['name' => "bidesh", 'age'=>25];
     }
 }

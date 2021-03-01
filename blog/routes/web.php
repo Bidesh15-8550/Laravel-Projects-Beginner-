@@ -18,4 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('users/{user}',[Users::class,'index']);
+Route::get('/user', function () {
+    return view("users");
+});
