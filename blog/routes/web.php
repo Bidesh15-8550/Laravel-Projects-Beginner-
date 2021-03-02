@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Users;
+use App\Http\Controllers\Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,3 +14,9 @@ use App\Http\Controllers\Users;
 |
 */
 
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::view("users", "users");
+Route::view("about", "about");
