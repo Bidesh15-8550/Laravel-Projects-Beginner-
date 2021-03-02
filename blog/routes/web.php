@@ -14,12 +14,3 @@ use App\Http\Controllers\Users;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/user', function () {
-    return view("users");
-});
-
-Route::get('user', [Users::class,'loadview']);
