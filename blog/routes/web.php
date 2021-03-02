@@ -21,3 +21,5 @@ Route::get('/', function () {
 Route::get('/user', function () {
     return view("users");
 });
+
+Route::get('user', [Users::class,'loadview']);

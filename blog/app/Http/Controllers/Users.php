@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 class Users extends Controller
 {
     //
-    public function index($user)
+    function loadview()
     {
-        return ['name' => "bidesh", 'age'=>25];
+        return view("users");
     }
 }
