@@ -1,2 +1,1 @@
-<x-header data="users Component Header" />
-<h1>User Page</h1>
+<h1>Users Page</h1>
