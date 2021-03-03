@@ -18,4 +18,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::view("users",[UsersController::class,'viewload']);
+Route::get("users",[UsersController::class,'viewload']);

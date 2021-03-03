@@ -6,9 +6,10 @@ use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
+    //
     function viewload()
     {
-        $data= ['Bidesh','biswas',"locky",'bruce'];
+        $data= ['Bidesh','biswas'];
         return view('users',['users'=>$data]);
     }
 }
