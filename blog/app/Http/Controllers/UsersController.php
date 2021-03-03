@@ -8,7 +8,7 @@ class UsersController extends Controller
 {
     function viewload()
     {
-        $data= ['Bidesh','biswas'];
+        $data= ['Bidesh','biswas',"locky",'bruce'];
         return view('users',['users'=>$data]);
     }
 }
