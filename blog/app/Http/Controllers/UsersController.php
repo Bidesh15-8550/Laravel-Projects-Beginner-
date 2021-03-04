@@ -7,9 +7,8 @@ use Illuminate\Http\Request;
 class UsersController extends Controller
 {
     //
-    function viewload()
+    function getData()
     {
-        $data= ['Bidesh','biswas'];
-        return view('users',['users'=>$data]);
+        return "Form data will be here";
     }
 }

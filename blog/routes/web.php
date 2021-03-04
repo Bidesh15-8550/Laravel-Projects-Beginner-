@@ -18,4 +18,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get("users",[UsersController::class,'viewload']);
+Route::post("users",[UsersController::class,'getData']);
+Route::view("login","users");
