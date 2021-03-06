@@ -1,1 +1,49 @@
 after creating the middleware bind it in the kernal.php
+
+<?php
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UsersController;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+//Route::post("users",[UsersController::class,'getData']);
+Route::view("users","users");
+Route::view("home","home");
+Route::view("noaccess","noaccess");
+
+
+
+##UsersController
+
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class UsersController extends Controller
+{
+    //
+    function getData(Request $req)
+    {
+        $req ->validate([
+            'username' => 'required | max:10',
+            'userpassword' => 'required | min:5'
+        ]);
+        return $req->input();
+    }
+}

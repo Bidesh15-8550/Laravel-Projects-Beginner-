@@ -21,5 +21,6 @@ class ageCheck
             return redirect('noaccess');
         }
         return $next($request);
+
     }
 }
