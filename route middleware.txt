@@ -1,0 +1,16 @@
+go to kernal.php and add in route middleware
+'protectedPage' => \App\Http\Middleware\ageCheck::class,
+
+##web.php
+
+  */
+    public function handle(Request $request, Closure $next)
+    {
+        if($request->age && $request->age<18)
+        {
+            return redirect('noaccess');
+        }
+        return $next($request);
+
+    }
+

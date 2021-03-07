@@ -19,10 +19,7 @@ Route::get('/', function () {
 });
 
 //Route::post("users",[UsersController::class,'getData']);
-Route::view("users","users");
+Route::view("users","users")->middleware('protectedPage');
 Route::view("home","home");
 Route::view("noaccess","noaccess");
 
-Route::group(['middleware'=>['protectedPage']],function(){
-    Route::view("users","users");
-});
