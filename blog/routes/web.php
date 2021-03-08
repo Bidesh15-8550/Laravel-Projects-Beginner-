@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UsersController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +20,4 @@ Route::get('/', function () {
 });
 
 //Route::post("users",[UsersController::class,'getData']);
-Route::view("users","users")->middleware('protectedPage');
-Route::view("home","home");
-Route::view("noaccess","noaccess");
-
+Route::get('user',[UserController::class,'index']);
