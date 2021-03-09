@@ -1,3 +1,26 @@
+Map database table with class name
+define database structure
+write business login
+
+DB table        Model name
+users       =   user
+employees   =   employee
+
+inside Model..user.php
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class User extends Model
+{
+    use HasFactory;
+    public $table="employee";
+}
+
+web.php
 <?php
 
 use App\Http\Controllers\UserController;
@@ -21,3 +44,21 @@ Route::get('/', function () {
 
 //Route::post("users",[UsersController::class,'getData']);
 Route::get('user',[UserController::class,'getData']);
+
+//UserController
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\User;
+
+class UserController extends Controller
+{
+    //
+    function getData()
+    {
+        return User::all();
+    }
+}
+
