@@ -20,4 +20,4 @@ Route::get('/', function () {
 });
 
 //Route::post("users",[UsersController::class,'getData']);
-Route::get('user',[UserController::class,'getData']);
+Route::get('user',[UserController::class,'index']);
