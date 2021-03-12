@@ -3,15 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
-use App\Models\User;
-
 class UserController extends Controller
 {
     //
-    function index()
+    function testRequest(Request $req)
     {
-       $collection= Http::get("https://reqres.in/api/users?page=1​");
-       return view('users',['collection'=>$collection['data']]);
+       return $req->input();
     }
 }

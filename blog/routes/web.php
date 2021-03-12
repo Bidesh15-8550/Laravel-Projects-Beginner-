@@ -19,4 +19,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::delete("users",[UserController::class,'testRequest']);
 Route::view("login", 'user');

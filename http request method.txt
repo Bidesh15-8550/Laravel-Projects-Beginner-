@@ -1,0 +1,52 @@
+GET,POST,PUT,DELETE these are commonly used.Have to change the methods in web.php and user.blade.php 
+forms and routes will be same request.
+##web.php
+<?php
+
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Route;
+
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::delete("users",[UserController::class,'testRequest']);
+Route::view("login", 'user');
+
+##user.blade.php 
+<h1>User Login</h1>
+<form action="users" method="POST">
+    {{ method_field('DELETE') }}
+    @csrf
+    <input type="text" name="user" placeholder="Enter Name"><br><br>
+    <input type="password" name="user" placeholder="Enter Password"><br><br>
+    <button type="submit">Login</button>
+
+</form>
+
+##UserController.php 
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+class UserController extends Controller
+{
+    //
+    function testRequest(Request $req)
+    {
+       return $req->input();
+    }
+}
