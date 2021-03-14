@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserAuth;
 use Illuminate\Support\Facades\Route;
 
 
@@ -19,5 +19,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::delete("users",[UserController::class,'testRequest']);
-Route::view("login", 'user');
+Route::post("user",[UserAuth::class,'userlogin']);
+Route::view("login", 'login');
