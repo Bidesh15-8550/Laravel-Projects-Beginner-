@@ -13,7 +13,7 @@ class UserAuth extends Controller
         $data= $req->input();
         $req->session()->put('user',$data['user']);
         //echo session('user');
-
+        return redirect('profile');
 
     }
 }

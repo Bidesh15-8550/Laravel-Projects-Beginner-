@@ -1,0 +1,91 @@
+##web.php 
+<?php
+
+use App\Http\Controllers\UserAuth;
+use Illuminate\Support\Facades\Route;
+
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::post("user",[UserAuth::class,'userlogin']);
+// Route::view("login", 'login');
+Route::view("profile", 'profile');
+
+Route::get('/login', function () {
+    if(session()->has('user'))
+    {
+        return redirect('profile');
+    }
+    return view('login');
+});
+
+
+Route::get('/logout', function () {
+    if(session()->has('user'))
+    {
+        session()->pull('user');
+    }
+    return redirect('login');
+});
+
+
+##login.blade.php 
+<h1>User Login</h1>
+
+<form action="user" method="POST">
+    @csrf
+    <input type="text" name="user" placeholder="Enter Username"> <br> <br>
+    <input type="password" name="password" placeholder="Enter User Password"> <br> <br>
+    <button type="submit">Login</button>
+</form>
+
+##UserAuth.php 
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Contracts\Session\Session;
+use Illuminate\Http\Request;
+
+class UserAuth extends Controller
+{
+    //
+    function userlogin(Request $req)
+    {
+        $data= $req->input();
+        $req->session()->put('user',$data['user']);
+        //echo session('user');
+        return redirect('profile');
+
+    }
+}
+
+##profile.blade.php
+<h1>Profile Page</h1>
+<h2>Hello, {{ session('user') }}</h2>
+
+<a href="/logout">Logout</a>
+
+##user.blade.php
+<h1>User Login</h1>
+<form action="users" method="POST">
+    {{ method_field('DELETE') }}
+    @csrf
+    <input type="text" name="user" placeholder="Enter Name"><br><br>
+    <input type="password" name="user" placeholder="Enter Password"><br><br>
+    <button type="submit">Login</button>
+
+</form>

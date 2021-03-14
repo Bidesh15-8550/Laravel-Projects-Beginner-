@@ -20,4 +20,24 @@ Route::get('/', function () {
 });
 
 Route::post("user",[UserAuth::class,'userlogin']);
-Route::view("login", 'login');
+// Route::view("login", 'login');
+Route::view("profile", 'profile');
+
+Route::get('/login', function () {
+    if(session()->has('user'))
+    {
+        return redirect('profile');
+    }
+    return view('login');
+});
+
+
+Route::get('/logout', function () {
+    if(session()->has('user'))
+    {
+        session()->pull('user');
+    }
+    return redirect('login');
+});
+
+
