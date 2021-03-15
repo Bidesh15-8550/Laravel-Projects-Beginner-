@@ -1,0 +1,56 @@
+##add.blade.php 
+<h1>Add member</h1>
+@if (session('user'))
+<h3 style="color: green">{{ session('user') }} has been added</h3>
+@endif
+
+<form action="addmember" method="POST">
+    @csrf
+    <input type="text" name="user" placeholder="Enter User Name"><br><br>
+    <input type="password" name="password" placeholder="Enter Password"><br><br>
+    <input type="text" name="email" placeholder="Enter Email"><br><br>
+    <button type="submit">Add Member</button>
+
+</form>
+
+##AddMember.php 
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class AddMember extends Controller
+{
+    //
+    function add(Request $req)
+    {
+        $data= $req->input('user');
+        $req->session()->flash('user',$data);
+        return redirect('add');
+    }
+}
+##web.php
+<?php
+
+use App\Http\Controllers\AddMember;
+use Illuminate\Support\Facades\Route;
+
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::view('add', 'add');
+Route::post("addmember",[AddMember::class,'add']);
