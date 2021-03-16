@@ -1,3 +1,27 @@
+##upload.blade.php 
+<h1>Upload File</h1>
+<form action="upload" method="POST" enctype="multipart/form-data">
+    @csrf
+    <input type="file" name="file"><br><br>
+    <button type="submit">Upload File</button>
+</form>
+
+##uploadcontroller.php 
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class UploadController extends Controller
+{
+    //
+    function index(Request $req){
+        return $req->file('file')->store('docs');
+    }
+}
+
+##web.php 
 <?php
 
 use App\Http\Controllers\UploadController;
