@@ -1,0 +1,71 @@
+first create a view then go to lang folder and create a file inside en folder named profile.php(it can be any name)
+then in the lang folder create a new folder and create a file which will be named like same in the previous en folder.
+to change language u need to go to config->app.php-> search locale and change it to your desired language folder name(like bn,ko,en)
+or you can route them to web.php 
+
+##For lang folder
+profile.php in ko
+<?php
+return[
+    'welcome' => "프로필 페이지",
+    'about'=>'약',
+    'list'=>'명부',
+    'contact'=>'접촉'
+]
+?>
+##For lang folder
+profile.php in bn
+<?php
+return[
+    'welcome' => "প্রোফাইল পৃষ্ঠা",
+    'about'=>'সম্পর্কিত',
+    'list'=>'তালিকা',
+    'contact'=>'যোগাযোগ'
+]
+?>
+
+##For lang folder
+profile.php in en
+<?php
+return[
+    'welcome' => "Profile Page",
+    'about'=>'about',
+    'list'=>'list',
+    'contact'=>'contact'
+]
+?>
+
+##web.php 
+<?php
+
+use App\Http\Controllers\UploadController;
+use Illuminate\Support\Facades\Route;
+
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/profile/{lang}', function ($lang) {
+    App::setlocale($lang);
+    return view('profile');
+});
+
+##profile.blade.php 
+<h1>{{ __('profile.welcome') }}</h1>
+
+<a href="">{{ __('profile.list') }}</a>
+<a href="">{{ __('profile.about') }}</a>
+<a href="">{{ __('profile.contact') }}</a>
+
